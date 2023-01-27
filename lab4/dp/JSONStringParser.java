@@ -12,12 +12,6 @@ public class JSONStringParser {
         index = 0;
     }
 
-    private JSONStringParser(int i){
-        builder = new JSONObjectBuilderImp();
-        index = i;
-    }
-
-
     void next_nonwhite_char(char[] s, int i){
         while(i < s.length && (s[i] == ' ' || s[i] == '\n' || s[i] == '\r' || s[i] == '\t')){
             i++;
@@ -39,7 +33,7 @@ public class JSONStringParser {
             i++;
         }
         else {
-            while (i < s.length && (Character.isAlphabetic(s[i]) || Character.isDigit(s[i]) || s[i] == '_')) {
+            while (i < s.length && (Character.isAlphabetic(s[i]) || Character.isDigit(s[i]) || s[i] == '_' || s[i] == '/')) {
                 out.append(s[i]);
                 i++;
             }

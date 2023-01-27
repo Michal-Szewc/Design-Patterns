@@ -1,6 +1,10 @@
 import dp.*;
 
 //
+// format JSON:
+// każda nazwa pola obiektu składa się z liter, cyfr i specjalnych znaków _ oraz /
+// każda linijka poza otwarciem obiektu i samym końcem kończy się przecinkiem
+//
 // Przykładowa moja struktura JSONa
 // {
 // name: "Jan",
