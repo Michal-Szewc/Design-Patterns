@@ -105,14 +105,14 @@ public class BaseChat {
                 case 'h':
                 case 'w':
                     return onIntroduction(msg);
-                case 'm':
-                    return "message " + msg.substring(2);
                 case 'd':
                     String name = getSenderName(msg, 2);
                     clientMap.remove(name);
                     return name + " left the chat";
                 case 'b':
                     return "broadcast " + msg.substring(2);
+                case 'm':
+                    return "message " + msg.substring(2);
             }
 
 
@@ -157,7 +157,7 @@ public class BaseChat {
             try {
 
                 // if new user (hello signal) send welcome signal
-                sendMessage(port, "w:" + port + " " + clientName);
+                sendMessage(port, "w:" + this.port + " " + clientName);
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -41,7 +41,7 @@ public class ChatFacade {
     // has access to normal broadcast and can use it to for example send hello signal.
     public void broadcast(String msg) throws IOException {
         for(Integer port: baseChat.getPorts()){
-            baseChat.sendMessage(port, "b: " + baseChat.getClientName() + ": " + msg);
+            baseChat.sendMessage(port.shortValue(), "b: " + baseChat.getClientName() + ": " + msg);
         }
     }
 
