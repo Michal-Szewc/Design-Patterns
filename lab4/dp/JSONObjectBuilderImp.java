@@ -1,35 +1,48 @@
 package dp;
 
+import java.util.Stack;
+
 public class JSONObjectBuilderImp implements JSONObjectBuilder{
 
-    JSONObject obj;
+    Stack<JSONObject> objs = new Stack<>();
+    JSONObject last = new JSONObject();
 
     @Override
     public void reset() {
-        this.obj = new JSONObject();
+        while(!this.objs.empty()) {
+            this.objs.pop();
+        }
+        this.objs.push(new JSONObject());
     }
 
     @Override
     public void addInteger(String name, int x) {
-        obj.addProperty(name, new JSONInteger(x));
+        objs.peek().addProperty(name, new JSONInteger(x));
     }
 
     @Override
     public void addFloat(String name, float x) {
-        obj.addProperty(name, new JSONFloat(x));
+        objs.peek().addProperty(name, new JSONFloat(x));
     }
 
     @Override
     public void addString(String name, String s) {
-        obj.addProperty(name, new JSONString(s));
+        objs.peek().addProperty(name, new JSONString(s));
     }
 
     @Override
-    public void addJSONObject(String name, JSONObject o) {
-        obj.addProperty(name, o);
+    public void addInnerJSONObject(String name) {
+        JSONObject o = new JSONObject();
+        objs.peek().addProperty(name, o);
+        objs.push(o);
+    }
+
+    @Override
+    public void closeInnerJSONObject() {
+        last = objs.pop();
     }
 
     public JSONObject create(){
-        return obj;
+        return last;
     }
 }

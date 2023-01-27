@@ -10,7 +10,9 @@ public interface JSONObjectBuilder {
 
     void addString(String name, String s);
 
-    void addJSONObject(String name, JSONObject o);
+    void addInnerJSONObject(String name);
+
+    void closeInnerJSONObject();
 
     JSONObject create();
 

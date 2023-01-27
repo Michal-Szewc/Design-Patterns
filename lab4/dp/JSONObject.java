@@ -7,7 +7,7 @@ public class JSONObject extends JSONEntity{
 
     private HashMap<String, JSONEntity> values = new HashMap<>();
 
-    JSONObject(){}
+    public JSONObject(){}
 
     JSONEntity get(String name){
         if(values.containsKey(name))
